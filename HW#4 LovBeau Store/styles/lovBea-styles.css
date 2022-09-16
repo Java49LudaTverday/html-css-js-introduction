@@ -1,0 +1,40 @@
+.body-style{
+    background-color:rgb(239, 201, 233);
+}
+.logo{
+display: block;  text-align: center;
+}
+.image-logo{
+width: 40px; height: 30px;
+}
+.main-class{
+
+}
+.details-header{
+    font-size: 2em;
+}
+.detail-container{
+display: block; text-align: center;
+}
+.image-title{
+width: 400px; height: 200px; text-align: center;
+}
+.details-title{
+display: block; text-align: center;
+}
+.thambnail-list{
+    list-style: none; display: block; text-align: center;
+}
+.thambnail-item{
+    display: inline-block;  margin: 0 10px;
+}
+.thambnails-ancor{
+display: block; text-align: center;
+}
+.thambnail-image{
+width: 120px; height: 120px;
+}
+.thambnails-title{
+display: block; text-align: center; font-size: 1.1em; height: 30px;
+
+}
