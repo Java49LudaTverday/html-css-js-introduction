@@ -1,6 +1,7 @@
 :root{
     --board-cell-height:10vw;
     --board-cell-width:10vw;
+    --border: 1.5px;
 }
 html,body{
     height: 100%;
@@ -13,20 +14,64 @@ body{
     justify-content: center;
 }
 .details-board{
-height: calc(var(--board-cell-height)*8);
-width: calc(var(--board-cell-width)*8);
+height: calc((var(--board-cell-height) + var(--border))*10);
+width: calc((var(--board-cell-height) + var(--border))*10);
 display: flex;
-border:solid 2px black;
+justify-content: center;
+align-items: center;
+}
+.numbers-left{    
+    height: calc((var(--board-cell-height) + var(--border)));
+    width: calc((var(--board-cell-height) + var(--border)));
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-size: 1.1em;
+    padding-right: 1vw;
+    font-weight: bold;
+}
+.numbers-right{
+    height: calc((var(--board-cell-height) + var(--border)));
+    width: calc((var(--board-cell-height) + var(--border)));
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-size: 1.1em;
+    padding-right: 1vw ;
+    transform: rotate(180deg);
+    font-weight: bold;
+
+}
+.letters-bottom{
+    height: calc((var(--board-cell-height) + var(--border)));
+    width: calc((var(--board-cell-height) + var(--border)));
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    padding-top: 1vw;
+    font-weight: bold;
+}
+.letter-top{
+    height: calc((var(--board-cell-height) + var(--border)));
+    width: calc((var(--board-cell-height) + var(--border)));
+    display: flex;
+    justify-content: center;
+    align-items:flex-start;
+    transform: rotate(180deg);
+    padding-top: 1vw;
+    font-weight: bold;
 }
 .board-cell-white{
 background-color: white;
 height: var(--board-cell-height);
 width: var(--board-cell-width);
+border:solid 1px black;
 }
 .board-cell-black{
 background-color: black;
 height: var(--board-cell-height);
 width: var(--board-cell-width);
+border:solid 1px black;
 }
 @media(min-width: 560px){
     :root{
@@ -39,4 +84,17 @@ width: var(--board-cell-width);
         --board-cell-height:4vw;
         --board-cell-width:4vw;
     }
+    .numbers-left{         
+        font-size: 1.2em;
+    }
+    .numbers-right{
+        font-size: 1.2em;    
+    }
+    .letters-bottom{
+        font-size: 1.1em;
+    }
+    .letter-top{
+        font-size: 1.1em;
+    }
+
 }
