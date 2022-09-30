@@ -2,36 +2,21 @@
     --board-cell-height:10vw;
     --board-cell-width:10vw;
 }
-html,body,main{
+html,body{
     height: 100%;
     width:100%;
 }
 body{
     margin:0;
-}
-main{
     display:flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
 .details-board{
 height: calc(var(--board-cell-height)*8);
 width: calc(var(--board-cell-width)*8);
 display: flex;
-flex-direction: column;
 border:solid 2px black;
-}
-.board-row{
-    display:flex;
-    flex-direction: column;
-}
-.board-row-white{
-display:flex;
-flex-direction: row;
-}
-.board-row-black{
-display:flex;
-flex-direction: row;
 }
 .board-cell-white{
 background-color: white;
