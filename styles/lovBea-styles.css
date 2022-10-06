@@ -23,7 +23,7 @@ body {
     flex-direction: column;
     /*background-color: rgb(240, 202, 200);*/
     background: linear-gradient(to bottom right, rgb(246, 196, 217), rgb(248, 172, 223), rgb(247, 121, 228));
-    height: 90vh;
+    /*height: 90vh;*/
     margin: 4px;
 }
 
@@ -56,9 +56,10 @@ body {
     flex-direction: column;
     align-items: center;
     padding-bottom: 5vh;
-    position:relative;
 }
-
+.frame-container {
+position:relative;
+}
 .image-title {
     width: 80vw;
     height: 70vw;
@@ -74,8 +75,8 @@ body {
     font-style: italic;
     background:rgb(249, 125, 212);
     position:absolute;
-    left: 25%;
-    bottom: 10vw;
+    left: 22%;
+    bottom: 5vw;
     border-radius: 20%;
 }
 
@@ -105,11 +106,14 @@ body {
     flex-direction: column;
 
 }
-
 .thambnail-image {
     width:var(--thambnail-img-width);
     height: var(--thambnail-img-height);
 }
+.thambnail-item:hover{
+    transform: scale(1.1);
+    margin-left: 0.8vw;
+   }
 
 .thambnails-title {
     display: block;
@@ -130,7 +134,7 @@ body {
    .main-class{
     display: flex;
     flex-direction: row;
-    max-height: 80vh;
+    max-height: 90vh;
     justify-content:space-around;
    }
    .image-title{
@@ -139,7 +143,7 @@ body {
    }
    .thambnail-list {
     order: -1;
-    max-height: 70vh;
+    max-height: 90vh;
     justify-content:flex-start;
     max-width: calc(var(--thambnail-img-width)*1.4);
     margin: 0;
@@ -165,17 +169,14 @@ body {
     width:var(--thambnail-img-width);
    }
    .detail-container{
-    padding-top: 3vh;
+    padding-top: 8vh;
    }
    .details-title {
     font-size: 1.3em;
     left: 27%;
-    bottom: 6vw;
+    bottom: 3vw;
    }
-   .thambnail-item:hover{
-    transform: scale(1.1);
-    margin-left: 0.8vw;
-   }
+   
    .thambnails-title{
         font-size: 13px;
     }
@@ -183,13 +184,13 @@ body {
     
 @media (min-width: 900px){
     :root{
-        --thambnail-img-height: 8.4vw;
-        --thambnail-img-width: 12vw;
+        --thambnail-img-height: 7vw;
+        --thambnail-img-width: 9vw;
         --thambnail-title-height: calc(var(--thambnail-img-height)*0.25);
      }
     .image-title{
-        height: 40vw;
-        width: 50vw;
+        height: 30vw;
+        width: 40vw;
        } 
     .logo {
         font-size: 1.4em;
@@ -197,7 +198,7 @@ body {
     .details-title {
        /* padding-top: 4vh;*/
         font-size: 2.5em;
-        left:30%;
+        left:25%;
         bottom: 2.1vw;
     }
     .image-logo {
@@ -209,7 +210,7 @@ body {
         max-width: calc(var(--thambnail-img-width)*1.4);
     }
     .thambnails-title{
-        font-size: 18px;         
+        font-size: 17px;         
     }
     
 }
