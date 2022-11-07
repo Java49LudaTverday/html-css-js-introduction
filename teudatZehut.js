@@ -91,3 +91,4 @@ function checkInputTZ (numTZ){
 function checkLengthOfArr (array) {
     return array.length == 9 ? array : false;
 }
+
