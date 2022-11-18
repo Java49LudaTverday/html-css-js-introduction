@@ -1,7 +1,7 @@
 const BLACK = 'black';
 const RED = 'red';
 const GREY = 'rgb(233, 245, 228)'
-const N_LETTERS = 1;
+//const N_LETTERS = 1;
 const questions =[ "What is the official name of JavaScript?",
     "What attribute may used an old JavaScript, but now it is not required?",
     "What is name of block in JavaScript code, that can be executed when 'called' for?",
@@ -29,10 +29,10 @@ buttonCansel.hidden = true;
 let indPreviosly = 0;
 
 function choiseQuestion (questions, answers) {
-    let index = Math.floor(Math.random()*questions.length);
-    if(index == indPreviosly){
+    let index = -1;
+    do {
         index = Math.floor(Math.random()*questions.length);
-    }
+    } while (index == indPreviosly);
     indPreviosly = index;
     question = questions[index];
     let answer = answers[index];    
@@ -59,14 +59,16 @@ function onChange(event) {
     const letterGuess = event.target.value;
     let letterGuessLow = letterGuess.toLowerCase();
     let arLetGues = Array.from(letterGuessLow);
+    console.log(arLetGues);
      event.target.value = '';
      let arAnswer = Array.from(answer);
-     if (letterGuessLow.length > N_LETTERS && letterGuessLow.length != arAnswer.length) {
-         alert(`Enter a letter or guess word`);
+     if (letterGuessLow.length > arAnswer.length) {
+         alert(`Enter guess word`);
      } else {  
         let res = false;        
          arAnswer.forEach((elem, index) => {
-            if (elem ==letterGuessLow || elem == arLetGues[index]){ 
+           // elem == letterGuessLow || elem == arLetGues[index]
+            if (arLetGues.includes(elem)) { 
                 letterDiv[index].style.background = GREY;
                 res = true;  
                 wordGuess[index] = elem;                           
@@ -74,8 +76,7 @@ function onChange(event) {
                 res;                                              
             }           
             rightOrWrong(res);  
-            endOfGame (wordGuess);
-            console.log(wordGuess);
+           endOfGame (wordGuess);
          })
     }  
  } 
@@ -84,7 +85,7 @@ function onChange(event) {
   }
 function rightOrWrong(res){
         if(res) {
-            informMessage.innerHTML = "right";
+            informMessage.innerHTML = "includ letter/s";
             informMessage.style.color = 'green';
         } else {
             informMessage.innerHTML = "wrong";
