@@ -5,20 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles/wordle.css">
+    <link rel="stylesheet" href="styles/marvels-field.css">
 </head>
 <body>
-    <input id="123" type="text" onchange="onChange(event)">
-    <section class="word-guess">
-        <div class="letter-guess"></div>
-        <div class="letter-guess"></div>
-        <div class="letter-guess"></div>
-        <div class="letter-guess"></div>
-        <div class="letter-guess"></div>
+    <header class="header">MARVELS FIELD</header>
+    <p class="welcom">WELCOM TO THE GAME!</p>
+    <p class="introduction">PRESS A BUTTON TO START!</p>
+    <p class="question"></p>
+    <section class="letters-guess">        
     </section>
+    <p class="inform-message"></p>
+    <input id="input-letter" type="text" onchange="onChange(event)" placeholder="letter">
     <p class="trials" ></p>
     <p class="play"></p>
-    <button class="button-play" onclick="offerToPlay ()"> play</button>
-    <script src="src/wordle.js"></script>
+    <button class="button-play" onclick="startPlay ()"> play</button>
+    <button class="button-end" onclick="canselPlay ()"> cansel</button>
+    <script src="src/marvels-field.js"></script>
 </body>
 </html>
