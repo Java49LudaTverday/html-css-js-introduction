@@ -1,0 +1,58 @@
+.button-section{
+    text-align: center;
+}
+button {
+    width: 20vw;
+}
+.movie-item {
+    text-align: center;    
+}
+.movies-list{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;  
+    margin-top: 0;  
+}
+.movie-image {
+    width: 25vw;
+    height: 35vw;
+}
+label{
+    display:block;
+    text-align: center;
+    margin-top: 2vw;
+}
+.leastPopular {
+    text-align: center;
+    margin-top: 5vw;
+}
+.mostPopular {
+    text-align: center;
+    margin-top: 5vw;
+}
+.allMovies {
+    display: flex;
+    justify-content: center;
+    margin-top: 2vw;
+}
+.details-section{
+    display:flex;
+    flex-direction: column;
+}
+#titleMovie{
+    display: block;
+    text-align: center;
+    font-size: 2.2em;
+}
+#descrMovie{
+    text-align: center;
+    margin-top: 10vw;
+    font-size: 1.2em;
+    width:40vw;
+}
+.section-descr{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
