@@ -1,3 +1,25 @@
+html{
+    width: 100%;
+    height: 100%;
+}
+body {
+    background: linear-gradient(-45deg, #ee8666, #e978a4, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+    }
+    
+@keyframes gradient {
+    0% {
+    background-position: 0% 50%;
+    }    
+    50% {
+    background-position: 100% 50%;
+    }    
+    100% {
+    background-position: 0% 50%;
+    }
+}
 .button-section{
     text-align: center;
 }
@@ -5,18 +27,24 @@ button {
     width: 20vw;
 }
 .movie-item {
-    text-align: center;    
+    text-align: center; 
+    margin-top: 5vw;   
+    margin-right: 2vw;
 }
 .movies-list{
     list-style: none;
     display: flex;
-    justify-content: space-around;
-    flex-direction: column;  
-    margin-top: 0;  
+    flex-wrap: wrap; 
+    justify-content: space-evenly;
+    overflow-y: auto;    
+    margin-top: 0; 
+    width: 100% ;
+    height: 85vh;
+    
 }
 .movie-image {
-    width: 25vw;
-    height: 35vw;
+    width: 18vw;
+    height: 26vw;
 }
 label{
     display:block;
@@ -35,6 +63,7 @@ label{
     display: flex;
     justify-content: center;
     margin-top: 2vw;
+    max-height: 85vh;
 }
 .details-section{
     display:flex;
@@ -54,5 +83,5 @@ label{
 .section-descr{
     display:flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    margin-top: 7vw;
 }
