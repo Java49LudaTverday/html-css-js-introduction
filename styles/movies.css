@@ -84,3 +84,6 @@ label{
     flex-direction: column;
     margin-top: 7vw;
 }
+.active{
+    background-color: beige;
+}
