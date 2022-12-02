@@ -8,34 +8,45 @@
     <link rel="stylesheet" href="styles/form.css">
 </head>
 <body>
-    <form id="employee-form" onsubmit="onSubmit(event)" class="form-class">
-        <div class="two-inputs">
-            <input type="text" name="employee-name" required placeholder="Enter employee name">
-            <input type="email" name="email" placeholder="Enter email" required> 
-        </div>
-        <div class="date-label">
-            <label>Enter birthdate</label>
-            <input type="date" name="birthDate" required placeholder="birthdate">
-        </div>
-        
-        <div class="two-inputs">
-            <select name="department" required>
-                <option value hidden selected disabled>
-                    --Select Department--
-                </option>
-                <option value="QA">QA</option>
-                <option value="Development">Development</option>
-                <option value="Management">Management</option>
-                <option value="Audit">Audit</option>
-            </select>
-            <input type="number" name="salary" placeholder="Enter salary" onchange="onChange(event)" required>
-        </div>
-        <div class="buttons">
-            <button type="submit">Submit</button>
-            <button type="reset">Reset</button>  
-        </div>
-         
-    </form>
+    <div id="place-form">
+        <form id="employee-form" onsubmit="onSubmit(event)" class="form-class" >
+            <div class="two-inputs">
+                <label for="empemployee-name">Name:</label>
+                <input type="text" name="employee-name" onchange="onChange(event)" required placeholder="Upper/lowercase whithout space">
+                <span id="error_employee-name"></span>
+                <label for="email">Email:</label>
+                <input type="email" name="email" onchange="onChange(event)" placeholder="Enter email" required> 
+                <span id="error_email"></span>
+            </div>
+            <div class="date-label">
+                <label>Enter birthdate:</label>
+                <input type="date" name="birthDate" onchange="onChange(event)" required placeholder="birthdate">
+                <span id="error_birthDate"></span>
+            </div>
+            
+            <div class="two-inputs">
+                <label>Choice department:</label>
+                <select name="department" onchange="checkisValidDepartment()" required>
+                    <option value hidden selected disabled>
+                        --Select Department--
+                    </option>
+                    <option id="option" value="QA">QA</option>
+                    <option id="option" value="Development">Development</option>
+                    <option id="option"  value="Management">Management</option>
+                    <option id="option" value="Audit">Audit</option>
+                </select>
+                <span id="error_department"></span>
+                <label>Enter salary:</label>
+                <input type="number" name="salary" placeholder="from 1000 to 40000" onchange="onChange(event)" required>
+                <span id="error_salary"></span>
+            </div>
+            <div class="buttons">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>  
+            </div>             
+        </form>
+    </div>
+    
     <script src="src/form.js"></script>
 </body>
 </html>
