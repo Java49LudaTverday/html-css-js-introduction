@@ -53,3 +53,7 @@ body{
     justify-content: space-around;
     margin-top: 5vh;
 }
+span{
+    font-size: 0.8em;
+    color:red;
+}
