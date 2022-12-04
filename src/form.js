@@ -1,6 +1,7 @@
 const inputElements = document.querySelectorAll(".form-class [name]");
 const YEAR_MIN = 1959;
 const YEAR_MAX = new Date().getFullYear();
+const ACode = "A".charCodeAt();
 function onSubmit(event) {
     event.preventDefault();
     console.log("submitted");
@@ -47,9 +48,13 @@ function timeoutError(nameElement) {
     }, 3000)
 }
 function checkisValidName(event) {
-    let res = true;
+   let res = true;
     let arrayInput = Array.from(event.target.value);
-    arrayInput.forEach(elem => {
+   /*let res = arrayInput.every(letter => {
+        let charCodeLet = letter.charCodeAt(0);
+        (isNaN(+letter)|| (charCodeLet >=ACode && charCodeLet< ACode+26) || (charCodeLet>(ACode+33)&&charCodeLet<=("z".charCodeAt()))) 
+    })*/
+   arrayInput.forEach(elem => {
         let number = +elem;
         if (!isNaN(number)) {
             res = false;
@@ -73,6 +78,7 @@ function checkisValidBirthDate(event) {
     let res = true;
     let arrayInput = Array.from(event.target.value);
     let year = arrayInput.slice(0, 4).join('');
+    console.log(year);
     if (year < YEAR_MIN || year > YEAR_MAX) {
         res = false;
     }
