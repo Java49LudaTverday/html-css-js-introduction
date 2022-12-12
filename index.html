@@ -20,9 +20,9 @@
         </div>
 
         <section class="addBook" hidden>
-            <form class="form-book" onsubmit="onAddBook(event)">
+            <form class="form-book" id="form-book" ">
                 <label for="title">Title:</label>
-                <input type="text" name="title" placeholder="title">
+                <input type="text" name="title" placeholder="title" required>
                 <label for="author">Author:</label>
                 <input type="text" name="author" placeholder="author" required>
                 <label for="genre">Choise genre:</label>
@@ -36,10 +36,10 @@
                     <option>history</option>
                 </select>
                 <label for="publish_data">Publish date: </label>
-                <input type="date" name="publish_data" onchange="onChange(event)">
+                <input type="date" name="publish_data" id="publish-data" required>
                 <span id="error_publish_data"></span>
                 <label for="pages">Number of pages:</label>
-                <input type="number" name="pages" placeholder="number of pages" onchange="onChange(event)" required>
+                <input type="number" name="pages" id="input-pages" placeholder="number of pages"  required>
                 <span id="error_pages"></span>
                 <div class="buttons-book">
                     <button type="submit" class="btn-add">Add</button>

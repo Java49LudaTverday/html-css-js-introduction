@@ -1,5 +1,8 @@
 import { Library } from "./data/library.js";
-const elementsInput = document.querySelectorAll(".form-book [name]");
+import {showErrorMessage} from "./ui/errorMessage.js";
+import {FormBook} from "./ui/FormBook.js";
+
+
 const sectionElements = document.querySelectorAll("section");
 const elemInputPages = document.querySelectorAll(".setPages [name]");
 const sectionBooksByPages = document.querySelector(".listBooksByPages");
@@ -18,24 +21,18 @@ let pageTO = 0;
 let AUTHOR = "";
 const MIN_YEAR = 1980;
 const MAX_YEAR = new Date().getFullYear();
-const TIME_OUT = 3500;
+
 const MIN_PAGES = 50;
 const MAX_PAGES = 2000;
 let FROM_PAGE = 0;
 let TO_PAGE = 0;
 ////
 sectionAddBook.style.display = "none";
-function onAddBook(event) {
-    event.preventDefault();
-    const arrBookData = Array.from(elementsInput);
-    const book = arrBookData.reduce((newBook, field) => {
-        newBook[field.name] = field.value;
-        return newBook;
-    }, {})
-    console.log(book);
-    library.addBook(book);
-    return book;
-}
+
+const bookForm = new FormBook ({idForm: "form-book", idPublishData: "publish-data", idPagesInput: "input-pages", 
+maxPages: MAX_PAGES, maxYear: MAX_YEAR, minPages: MIN_PAGES, minYear: MIN_YEAR  });
+
+bookForm.onAddBook(book => library.addBook(book));
 
 /////
 function showBooks(index) {
@@ -61,57 +58,13 @@ function showBooks(index) {
 
 }
 
-////////Validation:
-function onChange(event) {
-    const elementEvent = event.target;
-    console.log(elementEvent);
-    if (elementEvent.name === "publish_data") {
-        isValidPublishData(elementEvent);
-    }
-    if (elementEvent.name === "pages") {
-        isValidNumberOfPages(elementEvent);
-    }
-    // if (elementEvent.name === "pageFrom"){
-    //     FROM_PAGE == +elementEvent.value;        
-    // }
-    // if (elementEvent.name === "pageTo"){
-    //     TO_PAGE == +elementEvent.value;
-    //     isValidFromToPages(elementEvent,FROM_PAGE,TO_PAGE);
-    // }
-}
-function isValidPublishData(elementEvent) {
-    const value = elementEvent.value;
-    const year = value.slice(0, 4);
-    console.log(year);
-    if (year < MIN_YEAR || year > MAX_YEAR) {
-        showErrorMessage(elementEvent);
-    }
-}
-function isValidNumberOfPages(elementEvent) {
-    const value = elementEvent.value;
-    console.log(value);
-    if (value < MIN_PAGES || value > MAX_PAGES) {
-        showErrorMessage(elementEvent);
-    }
-}
+
 function isValidFromToPages(fromPage, toPage) {
     let res = true;
     if (fromPage > toPage) {
         res = false;
     }
     return res;
-}
-function showErrorMessage(elementEvent) {
-    const errorMessageElem = document.getElementById(`error_${elementEvent.name}`);
-    console.log(elementEvent.name)
-    errorMessageElem.innerHTML = `*enter correct ${elementEvent.name}`;
-    timeOutErrorMessage(errorMessageElem);
-    elementEvent.value = "";
-}
-function timeOutErrorMessage(errorMessageElem) {
-    setTimeout(() => {
-        errorMessageElem.innerHTML = "";
-    }, TIME_OUT);
 }
 
 /////////
@@ -151,27 +104,9 @@ function selectBooksByAuthor(event) {
     const booksByAuthor = library.getAuthorBooks(AUTHOR);
     sectionBooksByAuthor.innerHTML = addLIBook(booksByAuthor);
 }
-window.onAddBook = onAddBook;
 window.showBooks = showBooks;
 window.addLIBook = addLIBook;
 window.selectBooksByPages = selectBooksByPages;
 window.selectBooksByAuthor = selectBooksByAuthor;
-window.onChange = onChange;
 window.isValidFromToPages = isValidFromToPages;
 
-///////
-/*
-if(index == 0){
-        sectionAddBook.style.display = "flex";
-    }
-    if (index == 1) {
-        showDetailsSection(index);
-        sectionElements[index].innerHTML = addLIBook(library.books);
-    }
-    if (index == 2) {
-        showDetailsSection(index);
-    }
-    if (index == 3) {
-        showDetailsSection(index);
-    }
-*/
