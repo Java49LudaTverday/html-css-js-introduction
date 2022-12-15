@@ -1,39 +1,44 @@
 import { Library } from "./data/library.js";
-import {showErrorMessage} from "./ui/errorMessage.js";
 import {FormBook} from "./ui/FormBook.js";
+import { FormBookPages } from "./ui/FormBookPages.js";
+import { ListBooks } from "./ui/listBooks.js";
+import { FormAuthor } from "./ui/FormAuthor.js";
 
+const listAllBooks = new ListBooks("allBooks");
+const listBooksByPages = new ListBooks("listBooksPages");
+const listBooksByAuthor = new ListBooks("listBooksByAuthor");
 
 const sectionElements = document.querySelectorAll("section");
-const elemInputPages = document.querySelectorAll(".setPages [name]");
-const sectionBooksByPages = document.querySelector(".listBooksByPages");
-const sectionBooksByAuthor = document.querySelector(".listBooksByAuthor");
-const inputAuthor = document.querySelector(".inputAuthor");
 const sectionAddBook = document.querySelector(".addBook");
-const errorMessagePages = document.getElementById("error_pageTo");
 
 
 /////
 const library = new Library();
-const intervalPages = [];
 const ULSTYLE = "ulstyle";
-let pageFROM = 0;
-let pageTO = 0;
-let AUTHOR = "";
 const MIN_YEAR = 1980;
 const MAX_YEAR = new Date().getFullYear();
-
 const MIN_PAGES = 50;
 const MAX_PAGES = 2000;
-let FROM_PAGE = 0;
-let TO_PAGE = 0;
+
 ////
 sectionAddBook.style.display = "none";
 
 const bookForm = new FormBook ({idForm: "form-book", idPublishData: "publish-data", idPagesInput: "input-pages", 
 maxPages: MAX_PAGES, maxYear: MAX_YEAR, minPages: MIN_PAGES, minYear: MIN_YEAR  });
-
 bookForm.onAddBook(book => library.addBook(book));
 
+const bookFormPages =new FormBookPages ({idForm: "setPages", idFromInput: "inputPagesFrom", idToInput: "inputPagesTo"});
+bookFormPages.selectBooksByPages((objFromToPages) => {
+    const books = library.getBooksByPages(objFromToPages.fromPage, objFromToPages.toPage);
+    console.log(books);
+    listBooksByPages.showBooks(books);    
+});
+
+const bookFormAuthor = new FormAuthor ({idForm: "setAuthor", idInputAuthor: "inputAuthor"});
+bookFormAuthor.selectBooksByAuthor(author => {
+    const books = library.getAuthorBooks(author);
+    listBooksByAuthor.showBooks(books);
+});
 /////
 function showBooks(index) {
     sectionElements.forEach(section => section.hidden = true);
@@ -46,7 +51,7 @@ function showBooks(index) {
             break;
         case (1):
             showDetailsSection(index);
-            sectionElements[index].innerHTML = addLIBook(library.books);
+            listAllBooks.showBooks(library.getAllBooks());
             break;
         case (2):
             showDetailsSection(index);
@@ -57,56 +62,10 @@ function showBooks(index) {
     }
 
 }
-
-
-function isValidFromToPages(fromPage, toPage) {
-    let res = true;
-    if (fromPage > toPage) {
-        res = false;
-    }
-    return res;
-}
-
 /////////
 function showDetailsSection(index) {
     sectionElements[index].hidden = false;
     sectionElements[index].classList.add(ULSTYLE);
 }
-function addLIBook(array) {
-    const arrLIBooks = array.map(book => {
-        let listItem = `<ul class="list-books">
-        <li>Title: ${book.title}</li>
-        <li>Author: ${book.author}</li>
-        <li>Genre: ${book.genre}</li>
-        <li>Number of pages: ${book.pages}</li>
-        </ul>`
-        return listItem;
-    })
-    console.log(arrLIBooks);
-    return arrLIBooks.join('');
-}
-function selectBooksByPages(event) {
-    event.preventDefault();
-    pageFROM = +elemInputPages[0].value;
-    pageTO = +elemInputPages[1].value;
-    if (!isValidFromToPages(pageFROM, pageTO)) {
-        errorMessagePages.innerHTML = `*page "FROM" must be least page "TO"`;
-        timeOutErrorMessage(errorMessagePages);
-    }
-    isValidFromToPages(errorMessagePages, pageFROM, pageTO)
-    const booksByPages = library.getBooksByPages(pageFROM, pageTO);
-    sectionBooksByPages.innerHTML = addLIBook(booksByPages);
-}
-function selectBooksByAuthor(event) {
-    event.preventDefault();
-    AUTHOR = inputAuthor.value;
-    console.log(AUTHOR);
-    const booksByAuthor = library.getAuthorBooks(AUTHOR);
-    sectionBooksByAuthor.innerHTML = addLIBook(booksByAuthor);
-}
-window.showBooks = showBooks;
-window.addLIBook = addLIBook;
-window.selectBooksByPages = selectBooksByPages;
-window.selectBooksByAuthor = selectBooksByAuthor;
-window.isValidFromToPages = isValidFromToPages;
 
+window.showBooks = showBooks;

@@ -8,8 +8,8 @@ export class Library {
     getAllBooks () {
         return this.books;
     }
-    getBooksByPages (minPages, maxPages){
-        return this.books.filter(book => book.pages>=minPages && book.pages<maxPages);
+    getBooksByPages (fromPages, toPages){
+        return this.books.filter(book => book.pages>=fromPages && book.pages<toPages);
     }
     getAuthorBooks (author) {
         return this.books.filter(book => book.author === author);

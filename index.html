@@ -47,39 +47,39 @@
                 </div>
             </form>
         </section>
-        <section class="allBooks" hidden>
+        <section id="allBooks" class="allBooks" hidden>
         </section>
         <section class="booksByAuthor" hidden>
-            <form class="setAuthor" onsubmit="selectBooksByAuthor(event)">
+            <form id="setAuthor" class="setAuthor" ">
                 <label for="author">Author:</label>
-                <input type="text" name="author" class="inputAuthor" placeholder="enter author">
+                <input id="inputAuthor" type="text" name="author" class="inputAuthor" placeholder="enter author">
                 <div class="btns-setPages">
                     <button type="submit">Select</button>
                     <button type="reset">Reset</button>
                 </div>
             </form>
-            <div class="listBooksByAuthor">
+            <div id="listBooksByAuthor" class="listBooksByAuthor">
             </div>
         </section>
         <section class="booksByPages" hidden>
-            <form class="setPages" onsubmit="selectBooksByPages(event)">
+            <form id="setPages" class="setPages" >
                 <div class="inputs-pages">
                     <div class="pagesFromTo">
                         <label for="pageFrom">From page:</label>
-                        <input class="inputPages" type="number" name="pageFrom" placeholder="page from" onchange="onChange(event)" >
+                        <input id="inputPagesFrom" class="inputPages" type="number" name="pageFrom" placeholder="page from" >
                     </div>
                     <div class="pagesFromTo">
                         <label for="pageTo">To page:</label>
-                        <input class="inputPages" type="number" name="pageTo" placeholder="page to" onchange="onChange(event)">
+                        <input id="inputPagesTo" class="inputPages" type="number" name="pageTo" placeholder="page to" >
                     </div>
                 </div>
-                <span id="error_pageTo" name="error_pageTo"></span>
+                <span id="error_pageFrom" name="error_pageTo"></span>
                 <div class="buttons-book">
                     <button type="submit">Select</button>
                     <button type="reset">Reset</button>
                 </div>
             </form>
-            <div class="listBooksByPages">
+            <div id="listBooksPages" class="listBooksByPages">
             </div>
         </section>
     </div>
